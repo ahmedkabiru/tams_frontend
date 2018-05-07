@@ -1,0 +1,93 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Register Terminal'" [icon]="'fa-edit'"></app-page-header>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div *ngIf="errormessage" class="alert alert-danger">
+                {{ errormessage }}
+              </div>
+              <div class="card" style="margin: 0 auto;">
+                  <div class="card-body">
+                <form [formGroup]="angForm" (ngSubmit)="addTerminal()" novalidate>
+                        <div class="form-group">
+                          <label class="col-md-4">Terminal ID</label>
+                          <input type="text" [(ngModel)]="terminal.terminalid" name="terminalid" class="form-control" formControlName="terminalid" #terminalid />
+                        </div>
+                        <div *ngIf="angForm.controls['terminalid'].invalid && (angForm.controls['terminalid'].dirty || angForm.controls['terminalid'].touched)" class="alert alert-danger">
+                          <div *ngIf="angForm.controls['terminalid'].errors.required">
+                            Terminal ID is required.
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4">Merchant ID</label>
+                          <input type="text"  [(ngModel)]="terminal.merchantid"class="form-control" formControlName="merchantid" #merchantid/>
+                        </div>
+                        <div *ngIf="angForm.controls['merchantid'].invalid && (angForm.controls['merchantid'].dirty || angForm.controls['merchantid'].touched)" class="alert alert-danger">
+                          <div *ngIf="angForm.controls['merchantid'].errors.required">
+                            Merchant ID is required.
+                          </div>
+                        </div>
+                        <div class="form-group">
+                                <label class="col-md-4">Merchant Category Code</label>
+                                <input type="text" class="form-control" [(ngModel)]="terminal.merchantcategorycode" formControlName="merchantcategorycode" #merchantcategorycode/>
+                              </div>
+                              <div *ngIf="angForm.controls['merchantcategorycode'].invalid && (angForm.controls['merchantcategorycode'].dirty || angForm.controls['merchantcategorycode'].touched)" class="alert alert-danger">
+                                <div *ngIf="angForm.controls['merchantcategorycode'].errors.required">
+                                        Merchant Category Code is required.
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                    <label class="col-md-4">Merchant Address</label>
+                                    <input type="text" class="form-control" [(ngModel)]="terminal.namelocationaddress" formControlName="namelocationaddress" #namelocationaddress/>
+                                  </div>
+                                  <div *ngIf="angForm.controls['namelocationaddress'].invalid && (angForm.controls['namelocationaddress'].dirty || angForm.controls['namelocationaddress'].touched)" class="alert alert-danger">
+                                    <div *ngIf="angForm.controls['namelocationaddress'].errors.required">
+                                            Merchant Address is required.
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                        <label class="col-md-4">Serial Number</label>
+                                        <input type="text" class="form-control" [(ngModel)]="terminal.serialnumber" formControlName="serialnumber" #serialnumber/>
+                                      </div>
+                                      <div *ngIf="angForm.controls['serialnumber'].invalid && (angForm.controls['serialnumber'].dirty || angForm.controls['serialnumber'].touched)" class="alert alert-danger">
+                                        <div *ngIf="angForm.controls['serialnumber'].errors.required">
+                                                Serial Number is required.
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                            <label class="col-md-4">KEK</label>
+                                            <input type="text" class="form-control" [(ngModel)]="terminal.kek" formControlName="kek" #kek/>
+                                          </div>
+                                          <div *ngIf="angForm.controls['kek'].invalid && (angForm.controls['kek'].dirty || angForm.controls['kek'].touched)" class="alert alert-danger">
+                                            <div *ngIf="angForm.controls['kek'].errors.required">
+                                                    Master Key is required
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                                <label class="col-md-4">Kek Check Value</label>
+                                                <input type="text" class="form-control" [(ngModel)]="terminal.kekcheckvalue" formControlName="kekcheckvalue" #kekcheckvalue/>
+                                              </div>
+                                              <div *ngIf="angForm.controls['kekcheckvalue'].invalid && (angForm.controls['kekcheckvalue'].dirty || angForm.controls['kekcheckvalue'].touched)" class="alert alert-danger">
+                                                <div *ngIf="angForm.controls['kekcheckvalue'].errors.required">
+                                                        Kek check value is required.
+                                                </div>
+                                              </div>
+                                              <div class="form-group">
+                                                    <label class="col-md-4">Node</label>
+                                                    <input type="text" class="form-control" [(ngModel)]="terminal.node" formControlName="node" #node/>
+                                                  </div>
+                                                  <div *ngIf="angForm.controls['node'].invalid && (angForm.controls['node'].dirty || angForm.controls['node'].touched)" class="alert alert-danger">
+                                                    <div *ngIf="angForm.controls['node'].errors.required">
+                                                            Node is required.
+                                                    </div>
+                                                  </div>
+                          <div class="form-group">
+                                <button class="btn btn-success" type="submit"  [disabled]="angForm.pristine || angForm.invalid"> Add Terminal </button>
+                          </div>
+                      </form>
+                      </div>
+                      </div>
+            </div>
+    </div>
+    <!-- /.row -->
+</div>

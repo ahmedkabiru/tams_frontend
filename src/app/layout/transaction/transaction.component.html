@@ -1,0 +1,47 @@
+<div [@routerTransition]>
+        <app-page-header [heading]="'transaction'" [icon]="'fa-table'"></app-page-header>
+
+        <br/>
+        <div class="row">
+           
+            <div class="col col-xl-12 col-lg-12">
+                
+                <div class="card mb-6">
+                      <!-- <a [routerLink]="['addtransaction']">Details</a> | -->
+                    <div class="card-header">
+                       Transactions
+                    </div>
+                    <div class="card-body table-responsive">
+                            <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>MTI</th>
+                                    <th> Terminal Id</th>
+                                    <th>Merchant Id</th>
+                                    <th>Amount</th>
+                                    <th>RRN</th>
+                                    
+                                    <th>Merchant Address</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let transaction of transactions; let i = index">
+                                    <th scope="row">{{ i + 1 }}</th>
+                                    <td>{{ transaction.mti}}</td>
+                                    <td>{{ transaction.terminalid}}</td>
+                                    <td>{{ transaction.merchantid}}</td>
+                                    <td>{{transaction.amount}}</td>
+                                    <td>{{ transaction.retrievalreference}}</td>
+                                    <td>{{ transaction.locationnameaddress}}</td>
+                                </tr>
+    
+                            </tbody>
+                        </table>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    
