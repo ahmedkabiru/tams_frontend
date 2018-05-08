@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthHelperService } from '../../../auth/auth-helper.service';
 
 @Component({
     selector: 'app-sidebar',
@@ -11,8 +12,8 @@ export class SidebarComponent {
     isActive: boolean = false;
     showMenu: string = '';
     pushRightClass: string = 'push-right';
-
-    constructor(private translate: TranslateService, public router: Router) {
+    loginuser :string='';
+    constructor(private translate: TranslateService, public router: Router,private authHelperService:AuthHelperService ) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
@@ -27,6 +28,8 @@ export class SidebarComponent {
                 this.toggleSidebar();
             }
         });
+        this.loginuser = localStorage.getItem("id_username");
+   
     }
 
     eventCalled() {
@@ -61,6 +64,7 @@ export class SidebarComponent {
     }
 
     onLoggedout() {
-        localStorage.removeItem('isLoggedin');
+        this.authHelperService.logout();
+        this.router.navigate(["/login"]);
     }
 }

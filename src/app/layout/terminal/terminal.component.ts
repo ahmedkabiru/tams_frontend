@@ -14,8 +14,12 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class TerminalComponent implements OnInit {
   terminals: any;
+ // content :any;
   // rows: any[];
   // columns: any[];
+  closeResult:string="";
+  terminal = new Terminal() ;
+
   constructor(private authService:AuthService,private terminalService: TerminalService,private modalService: NgbModal, public router: Router) {
 
    }
@@ -37,16 +41,32 @@ export class TerminalComponent implements OnInit {
 
   getTerminals() {
     this.terminalService.getAllTerminals().subscribe(res => {
-      console.log(res.terminals);
       this.terminals = res.terminals;
     });
   }
 
-  updateTerminal(terminal : Terminal){
+  updateTerminal(content,terminal:Terminal){
       console.log(terminal);
+      this.terminal =terminal;
+      this.modalService.open(content).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
       
+    }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+
   }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+    } else {
+        return  `with: ${reason}`;
+    }
+}
     deleteTerminal(id) {
+      if(window.confirm('Are sure you want to delete this item ?')){
       this.terminalService.deleteTerminal(id).subscribe(res => {
             if(res.responsecode == "00"){
               alert("Deleted successfully");
@@ -54,6 +74,7 @@ export class TerminalComponent implements OnInit {
               window.location.reload(true);
             }
           });
+        }
     }
   
 

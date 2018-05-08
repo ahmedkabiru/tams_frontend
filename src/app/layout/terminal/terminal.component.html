@@ -29,20 +29,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr   *ngFor="let terminal of terminals; let i = index">
+                            <tr   *ngFor="let t of terminals; let i = index">
                                 <th scope="row">{{ i + 1 }}</th>
-                                <td>{{ terminal.terminalid }}</td>
-                                <td>{{ terminal.merchantcategorycode}}</td>
-                                <td>{{ terminal.merchantid}}</td>
-                                <td>{{ terminal.amelocationaddress}}</td>
-                                <td>{{terminal.currencycode}}</td>
-                                <td>{{ terminal.kek}}</td>
-                                <td>{{ terminal.kekcheckvalue}}</td>
+                                <td>{{ t.terminalid }}</td>
+                                <td>{{ t.merchantcategorycode}}</td>
+                                <td>{{ t.merchantid}}</td>
+                                <td>{{ t.namelocationaddress}}</td>
+                                <td>{{t.currencycode}}</td>
+                                <td>{{ t.kek}}</td>
+                                <td>{{ t.kekcheckvalue}}</td>
                                 <td colspan="2">
-                                        <button (click)="updateTerminal(terminal)"  class="btn btn-success">Update</button>
-                                    <button (click)="deleteTerminal(terminal.terminalid)"  class="btn btn-danger">Delete</button></td>
+                                        <div ngbDropdown placement="top-right" class="d-inline-block dropdown">
+                                                <button class="btn btn-outline-primary" ngbDropdownToggle>Action</button>
+                                                <div ngbDropdownMenu>
+                                                    <button class="dropdown-item" (click)="updateTerminal(content,t)">Update</button>
+                                                    <li role="separator" class="divider"></li>
+                                                    <button class="dropdown-item" (click)="deleteTerminal(t.terminalid)" >Delete</button>
+                                                </div>
+                                            </div>
+                                        <!-- <button (click)="updateTerminal(content,t)"  class="btn btn-success">Update</button>
+                                    <button (click)="deleteTerminal(t.terminalid)"  class="btn btn-danger" >Delete</button>
+                                 -->
+                                </td>
                             </tr>
-                            <!-- <tr #error>
+                            <!-- <tr *ngIf="terminals.lenght">
                                     <td colspan="5">No record Found</td>
                             </tr> -->
 
@@ -55,15 +65,57 @@
     </div>
     <ng-template #content let-c="close" let-d="dismiss">
             <div class="modal-header">
-                <h4 class="modal-title">Modal title</h4>
+                <h4 class="modal-title">Update Terminal</h4>
                 <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>One fine body&hellip;</p>
+                    <form (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                              <label for="firstname">Terminal ID</label>
+                              <input type="text" class="form-control" id="firstname" required
+                              [(ngModel)]="terminal.terminalid" name="terminalid">
+                            </div>
+                            <div class="form-group">
+                                <label for="firstname">Merchant  ID</label>
+                                <input type="text" class="form-control" id="firstname" required
+                                [(ngModel)]="terminal.merchantid" name="merchantid">
+                              </div>
+                              <div class="form-group">
+                                <label for="firstname">Serial No</label>
+                                <input type="text" class="form-control" id="firstname" required
+                                [(ngModel)]="terminal.serialnumber" name="serialnumber">
+                              </div>
+                            <div class="form-group">
+                                <label for="firstname">Merchant Category Code</label>
+                                <input type="text" class="form-control" id="firstname" required
+                                [(ngModel)]="terminal.merchantcategorycode" name="merchantcategorycode">
+                              </div>
+                              <div class="form-group">
+                                <label for="firstname">Merchant Address</label>
+                                <input type="text" class="form-control" id="firstname" required
+                                [(ngModel)]="terminal.namelocationaddress" name="namelocationaddress">
+                              </div>
+                              <div class="form-group">
+                                <label for="firstname">Kek</label>
+                                <input type="text" class="form-control" id="firstname" required
+                                [(ngModel)]="terminal.kek" name="kek">
+                              </div>
+                              <div class="form-group">
+                                <label for="firstname">Kek Checkvalue</label>
+                                <input type="text" class="form-control" id="firstname" required
+                                [(ngModel)]="terminal.kekcheckvalue" name="kekcheckvalue">
+                              </div>
+                              <div class="form-group">
+                                <label for="firstname">Node</label>
+                                <input type="text" class="form-control" id="firstname" required
+                                [(ngModel)]="terminal.node" name="node">
+                              </div>
+                            </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+               <button type="button" class="btn btn-success">Update</button>
+                <button type="button" class="btn btn-danger" (click)="c('Close click')">Close</button>
             </div>
         </ng-template>
