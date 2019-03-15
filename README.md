@@ -4,4 +4,4 @@ Terminal Management System built using Angular 5 and Bootstrap 4
 
 ### Screenshot
 
-![Alt text](images/login.jpg?raw=true "Title")
+![Alt text](images/login.png?raw=true "Title")
