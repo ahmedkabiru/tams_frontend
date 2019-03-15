@@ -9,11 +9,11 @@ import { AuthHelperService } from '../../../auth/auth-helper.service';
     styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-    isActive: boolean = false;
-    showMenu: string = '';
-    pushRightClass: string = 'push-right';
-    loginuser :string='';
-    constructor(private translate: TranslateService, public router: Router,private authHelperService:AuthHelperService ) {
+    isActive = false;
+    showMenu = '';
+    pushRightClass = 'push-right';
+    loginuser = '';
+    constructor(private translate: TranslateService, public router: Router, private authHelperService: AuthHelperService ) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
@@ -28,8 +28,8 @@ export class SidebarComponent {
                 this.toggleSidebar();
             }
         });
-        this.loginuser = localStorage.getItem("id_username");
-   
+        this.loginuser = localStorage.getItem('id_username');
+
     }
 
     eventCalled() {
@@ -65,6 +65,6 @@ export class SidebarComponent {
 
     onLoggedout() {
         this.authHelperService.logout();
-        this.router.navigate(["/login"]);
+        this.router.navigate(['/login']);
     }
 }

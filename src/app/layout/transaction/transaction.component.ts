@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TransactionService} from "./transaction.service";
+import {TransactionService} from './transaction.service';
 import { routerTransition } from '../../router.animations';
 @Component({
   selector: 'app-transaction',
@@ -9,16 +9,13 @@ import { routerTransition } from '../../router.animations';
 })
 export class TransactionComponent implements OnInit {
 
-  transactions:any;
+  transactions: any;
   constructor(private transactionService: TransactionService) {
-
    }
 
   ngOnInit() {
-    this.getTransaction()
+    this.getTransaction();
   }
-
-
 
   getTransaction() {
     this.transactionService.getAllTransactions().subscribe(res => {

@@ -9,10 +9,10 @@ import { AuthHelperService } from '../../../auth/auth-helper.service';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-    pushRightClass: string = 'push-right';
-    loginuser :string='';
+    pushRightClass = 'push-right';
+    loginuser = '';
 
-    constructor(private authHelperService:AuthHelperService , private translate: TranslateService, public router: Router) {
+    constructor(private authHelperService: AuthHelperService , private translate: TranslateService, public router: Router) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
@@ -31,8 +31,8 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loginuser = localStorage.getItem("id_username");
-   
+        this.loginuser = localStorage.getItem('id_username');
+
     }
 
     isToggled(): boolean {
@@ -52,8 +52,8 @@ export class HeaderComponent implements OnInit {
 
     onLoggedout() {
         this.authHelperService.logout();
-        this.router.navigate(["/login"]);
-        //localStorage.removeItem('isLoggedin');
+        this.router.navigate(['/login']);
+        // localStorage.removeItem('isLoggedin');
     }
 
     changeLang(language: string) {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NgxDatatableModule} from "@swimlane/ngx-datatable";
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import { TransactionRoutingModule } from './transaction-routing.module';
 import { TransactionComponent } from './transaction.component';
 import { PageHeaderModule } from './../../shared';

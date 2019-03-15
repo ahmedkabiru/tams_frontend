@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {NgxDatatableModule} from "@swimlane/ngx-datatable";
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import { TerminalRoutingModule } from './terminal-routing.module';
 import { TerminalComponent } from './terminal.component';
 import { PageHeaderModule } from './../../shared';

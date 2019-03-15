@@ -9,8 +9,8 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-            { path: 'terminal',loadChildren:'./terminal/terminal.module#TerminalModule'},
-            { path: 'transaction',loadChildren:'./transaction/transaction.module#TransactionModule'},
+            { path: 'terminal', loadChildren: './terminal/terminal.module#TerminalModule'},
+            { path: 'transaction', loadChildren: './transaction/transaction.module#TransactionModule'},
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
             { path: 'forms', loadChildren: './form/form.module#FormModule' },

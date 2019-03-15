@@ -4,21 +4,12 @@ import { TerminalComponent } from './terminal.component';
 import { AddTerminalComponent} from './add-terminal/add-terminal.component';
 const routes: Routes = [
     {
-      path: '', component: TerminalComponent
+        path: '', component: TerminalComponent
     },
-    
-	    {
-		 path: 'addterminal',
-		 component: AddTerminalComponent
-        }
-    
-
-
-    // {
-    //     path: 'addterminal',
-    //     component: AddTerminalComponent
-    // }
-
+    {
+        path: 'addterminal',
+        component: AddTerminalComponent
+    }
 
 ];
 

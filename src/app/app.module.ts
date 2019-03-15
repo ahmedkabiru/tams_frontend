@@ -1,20 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {NgxDatatableModule} from "@swimlane/ngx-datatable";
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AuthGuardService} from './auth/auth-guard.service';
-// import {AuthService} from "./auth/auth.service";
-// import {HTTP_INTERCEPTORS} from "@angular/common/http";
-// import {AuthInterceptor} from "./auth/auth.interceptor";
-// import {AuthHelperService} from "./auth/auth-helper.service";
-//import {AuthHelperService} from "./auth/auth-helper.service";
-import {AuthModule} from "./auth/auth.module";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {AuthGuardService} from './auth/auth-guard.service';
+// import {AuthService} from './auth/auth.service';
+// import {HTTP_INTERCEPTORS} from '@angular/common/http';
+// import {AuthInterceptor} from './auth/auth.interceptor';
+// import {AuthHelperService} from './auth/auth-helper.service';
+// import {AuthHelperService} from './auth/auth-helper.service';
+import {AuthModule} from './auth/auth.module';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -30,7 +30,7 @@ export function createTranslateLoader(http: HttpClient) {
         BrowserAnimationsModule,
         HttpClientModule,
         NgxDatatableModule,
-       // AuthHelperService,
+        // AuthHelperService,
         AuthModule,
         TranslateModule.forRoot({
             loader: {
@@ -43,11 +43,12 @@ export function createTranslateLoader(http: HttpClient) {
     ],
     declarations: [AppComponent],
     providers: [
-    AuthGuardService,    
-    // AuthService,
-    // AuthHelperService,
-    // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+        AuthGuardService,
+        // AuthService,
+        // AuthHelperService,
+        // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

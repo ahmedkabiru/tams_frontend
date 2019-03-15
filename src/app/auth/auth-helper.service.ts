@@ -1,32 +1,34 @@
-import {Injectable} from "@angular/core";
+import {Injectable} from '@angular/core';
 
 @Injectable()
-export class AuthHelperService{
+export class AuthHelperService {
 
-    private tokenKey:string;
-    private usernameKey:string;
-    constructor(){
-        this.tokenKey = "id_token";
-        this.usernameKey="id_username";
-        
+    tokenKey: string;
+    usernameKey: string;
+
+    constructor() {
+        this.tokenKey = 'id_token';
+        this.usernameKey = 'id_username';
+
     }
 
-    setSession(token){
-        localStorage.setItem(this.tokenKey,token);
+    setSession(token) {
+        localStorage.setItem(this.tokenKey, token);
     }
 
-    setUsername(username){
-        localStorage.setItem(this.usernameKey,username);
+    setUsername(username) {
+        localStorage.setItem(this.usernameKey, username);
     }
 
-    logout(){
+    logout() {
         localStorage.removeItem(this.tokenKey);
     }
 
-    public getToken():string{
+    public getToken(): string {
         return localStorage.getItem(this.tokenKey);
     }
-    public isLoggedIn(): boolean{
+
+    public isLoggedIn(): boolean {
         return this.getToken() != null;
     }
 

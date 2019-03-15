@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthHelperService} from "../auth/auth-helper.service";
+import {AuthHelperService} from '../auth/auth-helper.service';
 @Component({
     selector: 'app-layout',
     templateUrl: './layout.component.html',
